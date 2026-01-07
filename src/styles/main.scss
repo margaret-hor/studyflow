@@ -1,11 +1,4 @@
 @use './abstracts/index';
 @use './base/reset';
-@use './base/base';
 @use './base/typography';
-@use './components/button';
-@use './components/card';
-@use './components/modal';
-@use './components/navbar';
-@use './pages/dashboard';
-@use './pages/login';
-@use './pages/notes';
+@use './components/buttons';
