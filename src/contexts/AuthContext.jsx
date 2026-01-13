@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile } from "firebase/auth";
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../lib/firebase';
 
 const AuthContext = createContext();
@@ -11,18 +11,46 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const fetchUserProfile = async (uid) => {
+    try {
+      const userDoc = await getDoc(doc(db, 'users', uid));
+      if (userDoc.exists()) {
+        setUserProfile(userDoc.data());
+      }
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      setCurrentUser(user);
+
+      if (user) {
+        await fetchUserProfile(user.uid);
+      } else {
+        setUserProfile(null);
+      }
+
+      setLoading(false);
+    }, (error) => {
+      console.error('Auth state change error:', error);
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, []);
 
   async function signup(email, password, displayName) {
     try {
-      //create user
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      //add name to profile
       await updateProfile(user, { displayName });
 
-      //save in firestore
       await setDoc(
         doc(db, 'users', user.uid),
         {
@@ -32,6 +60,8 @@ export function AuthProvider({ children }) {
           createdAt: Date.now()
         }
       );
+
+      await fetchUserProfile(user.uid);
 
       return user;
     } catch (error) {
@@ -73,15 +103,17 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
+    userProfile,
     signup,
     login,
     logout,
-    loading
+    loading,
+    refreshProfile: () => currentUser && fetchUserProfile(currentUser.uid)
   };
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 }
