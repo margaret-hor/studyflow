@@ -29,11 +29,6 @@ export default function Login() {
 
   const message = location.state?.message;
 
-  useEffect(() => {
-    const savedEmail = localStorage.getItem('savedEmail') || '';
-    setFormData(prev => ({ ...prev, email: savedEmail }));
-  }, [rememberMe]);
-
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -114,8 +109,11 @@ export default function Login() {
 
     if (isChecked) {
       localStorage.setItem('shouldRememberEmail', 'true');
+
+      if (formData.email.trim()) {
+        localStorage.setItem('savedEmail', formData.email.trim());
+      }
     } else {
-      localStorage.removeItem('savedEmail');
       localStorage.removeItem('shouldRememberEmail');
     }
   };
