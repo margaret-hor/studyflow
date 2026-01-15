@@ -1,0 +1,6 @@
+@use "../abstracts/index" as a;
+
+body {
+  font-family: a.$font-primary;
+  color: a.$light-text-primary;
+}

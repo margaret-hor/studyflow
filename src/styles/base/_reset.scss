@@ -1,3 +1,5 @@
+@use '../abstracts/index' as a;
+
 * {
   margin: 0;
   padding: 0;
@@ -39,6 +41,13 @@ button {
 }
 input::placeholder {
   opacity: 1;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: a.$light-text-primary;
+  -webkit-box-shadow: 0 0 0px 1000px a.$gray-100 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;

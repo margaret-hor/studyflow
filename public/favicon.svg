@@ -1,13 +1,43 @@
-<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="319" height="320" viewBox="0 0 239 240">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#667eea"/>
-      <stop offset="100%" style="stop-color:#f093fb"/>
+    <linearGradient id="SVGID_study_grad_12" gradientUnits="objectBoundingBox" gradientTransform="matrix(1 0 0 1 0 0)" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" style="stop-color:rgb(156,64,216);stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:rgb(228,77,148);stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="SVGID_study_grad_13" gradientUnits="objectBoundingBox" gradientTransform="matrix(1 0 0 1 0 0)" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" style="stop-color:rgb(156,64,216);stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:rgb(228,77,148);stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="SVGID_study_grad_14" gradientUnits="objectBoundingBox" gradientTransform="matrix(1 0 0 1 0 0)" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" style="stop-color:rgb(156,64,216);stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:rgb(228,77,148);stop-opacity:1"/>
     </linearGradient>
   </defs>
-  <rect width="32" height="32" rx="8" fill="url(#grad)"/>
-  <rect x="10" y="8" width="12" height="16" rx="1" fill="white" opacity="0.9"/>
-  <line x1="13" y1="12" x2="19" y2="12" stroke="#667eea" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="13" y1="16" x2="19" y2="16" stroke="#667eea" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="13" y1="20" x2="17" y2="20" stroke="#667eea" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <path transform="translate(0,0)" 
+        style="stroke:rgb(0,0,0);stroke-width:0;fill:rgb(249,249,249)" 
+        vector-effect="non-scaling-stroke" 
+        stroke-linecap="round" 
+        d="M51.2029 54.532L51.2029 182.192 194.9629 182.192 194.9629 54.532Z"/>
+  
+  <g transform="matrix(0.1 0 0 -0.1 119.25 119.2895)">
+    <path transform="translate(-1192.5003, -1207.1049)"
+           style="stroke:rgb(255,255,255);stroke-opacity:0;fill:url(#SVGID_study_grad_12)"
+           stroke-linecap="round"
+           d="M524 2380 C281 2317 82 2116 20 1874 C1 1801 0 1761 0 1210 C0 663 1 618 19 548 C84 296 292 93 547 33 C618 17 678 15 1195 15 C1828 15 1826 15 1973 84 C2122 153 2238 266 2310 415 C2386 569 2385 564 2385 1210 C2385 1856 2386 1851 2310 2005 C2238 2153 2122 2267 1973 2336 C1838 2400 1836 2400 1185 2399 C642 2399 589 2397 524 2380 Z M1073 1699 C1094 1693 1129 1673 1151 1653 L1190 1618 L1229 1653 C1251 1673 1286 1693 1307 1699 C1362 1714 1713 1713 1728 1698 C1746 1680 1745 887 1727 872 C1720 866 1634 860 1514 858 C1284 855 1269 850 1249 778 C1235 723 1224 710 1190 710 C1156 710 1145 723 1131 778 C1111 850 1096 855 866 858 C746 860 660 866 653 872 C635 887 634 1680 652 1698 C667 1713 1018 1714 1073 1699 Z"/>
+  </g>
+  
+  <g transform="matrix(0.1 0 0 -0.1 94 112.4)">
+    <path transform="translate(-940, -1276)"
+           style="stroke:rgb(255,255,255);stroke-opacity:0;fill:url(#SVGID_study_grad_13)"
+           stroke-linecap="round"
+           d="M740 1286 L740 960 L914 960 C1010 960 1100 956 1114 950 L1140 940 L1139 1203 C1138 1501 1134 1527 1077 1574 L1038 1605 L889 1609 L740 1612 L740 1286 Z"/>
+  </g>
+  
+  <g transform="matrix(0.1 0 0 -0.1 144 112.5)">
+    <path transform="translate(-1440, -1275)"
+           style="stroke:rgb(255,255,255);stroke-opacity:0;fill:url(#SVGID_study_grad_14)"
+           stroke-linecap="round"
+           d="M1352 1600 C1305 1589 1264 1546 1251 1495 C1244 1469 1240 1348 1240 1196 L1240 940 L1266 950 C1280 956 1370 960 1466 960 L1640 960 L1640 1285 L1640 1610 L1513 1609 C1442 1608 1370 1604 1352 1600 Z"/>
+  </g>
 </svg>

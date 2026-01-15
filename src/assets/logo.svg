@@ -1,13 +1,26 @@
-<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="logo" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#667eea"/>
-      <stop offset="100%" style="stop-color:#f093fb"/>
-    </linearGradient>
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="239.000000pt" height="240.000000pt" viewBox="0 0 239.000000 240.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<defs>
+    <linearGradient id="study_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9C40D8" /> <stop offset="100%" stop-color="#E44D94" /> </linearGradient>
   </defs>
-  <rect width="48" height="48" rx="12" fill="url(#logo)"/>
-  <rect x="14" y="12" width="20" height="24" rx="2" fill="white" opacity="0.9"/>
-  <line x1="18" y1="18" x2="30" y2="18" stroke="#667eea" stroke-width="2" stroke-linecap="round"/>
-  <line x1="18" y1="24" x2="30" y2="24" stroke="#667eea" stroke-width="2" stroke-linecap="round"/>
-  <line x1="18" y1="30" x2="26" y2="30" stroke="#667eea" stroke-width="2" stroke-linecap="round"/>
+
+<g transform="translate(0.000000,240.000000) scale(0.100000,-0.100000)"
+fill="url(#study_grad)" stroke="none">
+<path d="M524 2380 c-243 -63 -442 -264 -504 -506 -19 -73 -20 -113 -20 -664
+0 -547 1 -592 19 -662 65 -252 273 -455 528 -515 71 -16 131 -18 648 -18 633
+0 631 0 778 69 149 69 265 182 337 331 76 154 75 149 75 795 0 646 1 641 -75
+795 -72 148 -188 262 -337 331 -135 64 -137 64 -788 63 -543 0 -596 -2 -661
+-19z m549 -681 c21 -6 56 -26 78 -46 l39 -35 39 35 c22 20 57 40 78 46 55 15
+406 14 421 -1 18 -18 17 -811 -1 -826 -7 -6 -93 -12 -213 -14 -230 -3 -245 -8
+-265 -80 -14 -55 -25 -68 -59 -68 -34 0 -45 13 -59 68 -20 72 -35 77 -265 80
+-120 2 -206 8 -213 14 -18 15 -19 808 -1 826 15 15 366 16 421 1z"/>
+<path d="M740 1286 l0 -326 174 0 c96 0 186 -4 200 -10 l26 -10 -1 263 c-1
+298 -5 324 -62 371 l-39 31 -149 4 -149 3 0 -326z"/>
+<path d="M1352 1600 c-47 -11 -88 -54 -101 -105 -7 -26 -11 -147 -11 -299 l0
+-256 26 10 c14 6 104 10 200 10 l174 0 0 325 0 325 -127 -1 c-71 -1 -143 -5
+-161 -9z"/>
+</g>
 </svg>

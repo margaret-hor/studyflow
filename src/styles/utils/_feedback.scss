@@ -1,0 +1,25 @@
+@use "../abstracts/index" as a;
+
+.success-message,
+.error-message {
+  padding: a.$spacing-4;
+  border-radius: a.$radius-lg;
+  margin-bottom: a.$spacing-6;
+  font-size: a.$font-sm;
+  text-align: center;
+}
+
+.success-message {
+  background-color: rgba(a.$success, 0.1);
+  color: a.$success;
+  border: 1px solid rgba(a.$success, 0.2);
+}
+
+.error-message {
+  background-color: rgba(a.$error, 0.1);
+  color: a.$error;
+  border: 1px solid rgba(a.$error, 0.2);
+  display: flex;
+  align-items: center;
+  gap: a.$spacing-2;
+}

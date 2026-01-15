@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import logo from "../../assets/logo.svg";
 import styles from './Signup.module.scss';
 
 export default function Signup() {
@@ -16,6 +17,8 @@ export default function Signup() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -31,13 +34,14 @@ export default function Signup() {
         return newErrors;
       });
     }
+    setServerError('');
   }
 
   const validateForm = () => {
     setServerError('');
     const newErrors = {};
     if (!formData.username.trim() || formData.username.trim().length < 2) {
-      newErrors.username = 'Name is required and should contain at least 2 characters';
+      newErrors.username = 'Name should contain at least 2 characters';
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email) {
@@ -46,10 +50,10 @@ export default function Signup() {
       newErrors.email = 'Please enter a valid email address';
     }
     if (!formData.password || formData.password.trim().length < 6) {
-      newErrors.password = 'Password is required and should contain at least 6 characters';
+      newErrors.password = 'Password should contain at least 6 characters';
     }
     if (!formData.confirmPassword.trim()) {
-      newErrors.confirmPassword = 'Confirm the password';
+      newErrors.confirmPassword = 'Please confirm your password';
     } else if (formData.password.trim() !== formData.confirmPassword.trim()) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
@@ -68,9 +72,9 @@ export default function Signup() {
     }
 
     setLoading(true);
+
     try {
       await signup(formData.email, formData.password, formData.username);
-
       navigate('/dashboard');
     } catch (error) {
       console.error("Signup error:", error);
@@ -95,72 +99,159 @@ export default function Signup() {
 
   return (
     <div className={styles.signupPage}>
-      <h2 className={styles.title}>create account</h2>
 
-      {serverError && <div className={styles.serverError}>{serverError}</div>}
+      <div className={`${styles.bgBlob1} bg-blob-1`}></div>
+      <div className={`${styles.bgBlob2} bg-blob-2`}></div>
 
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <div className={styles.inputGroup}>
-          <label htmlFor="username">Username *</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            disabled={loading}
-            placeholder="John Doe"
-          />
-          {errors.username && <span className={styles.error}>{errors.username}</span>}
-        </div>
-        <div className={styles.inputGroup}>
-          <label htmlFor="email">Email *</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            disabled={loading}
-            placeholder="example@mail.com"
-          />
-          {errors.email && <span className={styles.error}>{errors.email}</span>}
-        </div>
-        <div className={styles.inputGroup}>
-          <label htmlFor="password">Password *</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            disabled={loading}
-            placeholder="123456"
-          />
-          {errors.password && <span className={styles.error}>{errors.password}</span>}
-        </div>
-        <div className={styles.inputGroup}>
-          <label htmlFor="confirmPassword">Confirm password *</label>
-          <input
-            type="password"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            disabled={loading}
-            placeholder="123456"
-          />
-          {errors.confirmPassword && <span className={styles.error}>{errors.confirmPassword}</span>}
+      <div className={styles.container}>
+        <div className={styles.logoSection}>
+          <div className={styles.logo}>
+            <img src={logo} className={`${styles.logoImg} img-cover`} alt="logo" />
+          </div>
+          <h1 className={styles.title}>Create Account</h1>
+          <p className={styles.subtitle}>Start your learning journey with <span className={styles.logoTitle}>StudyFlow</span></p>
         </div>
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Creating account...' : 'Sign Up'}
-        </button>
-      </form>
+        <div className={styles.card}>
+          {serverError && <div className='error-message'>{serverError}</div>}
 
-      <p>
-        Already have an account? <Link to="/login">Log in</Link>
-      </p>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <div className={styles.inputGroup}>
+              <label htmlFor="username">Full Name</label>
+              <div className={styles.inputWrapper}>
+                <svg className={styles.inputIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="6" r="4" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M4 18c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="John Doe"
+                  className={`input-base ${errors.username ? 'input-error' : ''}`}
+                  autoComplete="new-password"
+                />
+              </div>
+              {errors.username && <span className={styles.error}>{errors.username}</span>}
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label htmlFor="email">Email</label>
+              <div className={styles.inputWrapper}>
+                <svg className={styles.inputIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M3 4h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M2 5l8 5 8-5" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="you@example.com"
+                  className={`input-base ${errors.email ? 'input-error' : ''}`}
+                  autoComplete="new-password"
+                />
+              </div>
+              {errors.email && <span className={styles.error}>{errors.email}</span>}
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label htmlFor="password">Password</label>
+              <div className={styles.inputWrapper}>
+                <svg className={styles.inputIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="8" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M6 8V6a4 4 0 118 0v2" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="••••••••"
+                  className={`input-base ${errors.password ? 'input-error' : ''}`}
+                  autoComplete="new-password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className={styles.togglePassword}
+                  tabIndex={-1}
+                >
+                  {showPassword ? (
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
+                      <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+              {errors.password && <span className={styles.error}>{errors.password}</span>}
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <div className={styles.inputWrapper}>
+                <svg className={styles.inputIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect x="3" y="8" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M6 8V6a4 4 0 118 0v2" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="••••••••"
+                  className={`input-base ${errors.confirmPassword ? 'input-error' : ''}`}
+                  autoComplete="new-password"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className={styles.togglePassword}
+                  tabIndex={-1}
+                >
+                  {showConfirmPassword ? (
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
+                      <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+              {errors.confirmPassword && <span className={styles.error}>{errors.confirmPassword}</span>}
+            </div>
+
+            <button type="submit" disabled={loading} className={`${styles.submitButton} button-primary`}>
+              {loading ? 'Creating account...' : 'Create account'}
+            </button>
+
+            <p className={styles.loginLink}>
+              Already have an account? <Link to="/login">Sign in</Link>
+            </p>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

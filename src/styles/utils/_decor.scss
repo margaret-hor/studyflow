@@ -1,0 +1,21 @@
+@use '../abstracts/index' as a;
+
+.bg-blob-1,
+.bg-blob-2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  @include a.float-animation(8s);
+  pointer-events: none;
+}
+
+@include a.bp-devices(monitor4k) {
+  .bg-blob-1,
+  .bg-blob-2 {
+    width: 800px;
+    height: 800px;
+  }
+}

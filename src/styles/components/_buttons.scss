@@ -1,0 +1,23 @@
+@use "../abstracts/index" as a;
+
+.button-primary {
+  padding: a.$spacing-3 a.$spacing-6;
+  border-radius: a.$radius-lg;
+  background-color: a.$primary;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all .3s ease;
+
+  &:hover:not(:disabled) {
+    background-color: a.$primary-dark;
+    box-shadow: a.$shadow-primary;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

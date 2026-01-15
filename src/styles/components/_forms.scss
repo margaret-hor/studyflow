@@ -1,0 +1,33 @@
+@use "../abstracts/index" as a;
+
+.input-base {
+  padding: a.$spacing-3 a.$spacing-4;
+  border-radius: a.$radius-xl;
+  font-size: a.$font-base;
+  transition: all .3s ease;
+  outline: none;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: a.$gray-400;
+  }
+
+  &:focus {
+    border-color: a.$primary;
+    box-shadow: 0 0 0 3px rgba(a.$primary, 0.1);
+  }
+
+  &.input-error {
+    border-color: a.$error;
+  }
+}
+
+@include a.bp-devices(monitor4k) {
+  .input-base {
+    font-size: a.$font-md;
+  }
+}
