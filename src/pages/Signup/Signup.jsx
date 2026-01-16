@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import logo from "../../assets/logo.svg";
+import { EmailIcon, LockIcon, EyeOpenIcon, EyeClosedIcon, UserProfileIcon } from "../../components/icons";
 import styles from './Signup.module.scss';
 
 export default function Signup() {
@@ -119,10 +120,7 @@ export default function Signup() {
             <div className={styles.inputGroup}>
               <label htmlFor="username">Full Name</label>
               <div className={styles.inputWrapper}>
-                <svg className={styles.inputIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <circle cx="10" cy="6" r="4" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M4 18c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" strokeWidth="1.5" />
-                </svg>
+                <UserProfileIcon className={styles.inputIcon} />
                 <input
                   type="text"
                   id="username"
@@ -141,10 +139,7 @@ export default function Signup() {
             <div className={styles.inputGroup}>
               <label htmlFor="email">Email</label>
               <div className={styles.inputWrapper}>
-                <svg className={styles.inputIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M3 4h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M2 5l8 5 8-5" stroke="currentColor" strokeWidth="1.5" />
-                </svg>
+                <EmailIcon className={styles.inputIcon} />
                 <input
                   type="email"
                   id="email"
@@ -163,10 +158,7 @@ export default function Signup() {
             <div className={styles.inputGroup}>
               <label htmlFor="password">Password</label>
               <div className={styles.inputWrapper}>
-                <svg className={styles.inputIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <rect x="3" y="8" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M6 8V6a4 4 0 118 0v2" stroke="currentColor" strokeWidth="1.5" />
-                </svg>
+                <LockIcon className={styles.inputIcon} />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   id="password"
@@ -183,18 +175,12 @@ export default function Signup() {
                   onClick={() => setShowPassword(!showPassword)}
                   className={styles.togglePassword}
                   tabIndex={-1}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" strokeWidth="1.5" />
-                      <circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
-                      <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.5" />
-                    </svg>
+                    <EyeClosedIcon />
                   ) : (
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" strokeWidth="1.5" />
-                      <circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
-                    </svg>
+                    <EyeOpenIcon />
                   )}
                 </button>
               </div>
@@ -204,10 +190,7 @@ export default function Signup() {
             <div className={styles.inputGroup}>
               <label htmlFor="confirmPassword">Confirm Password</label>
               <div className={styles.inputWrapper}>
-                <svg className={styles.inputIcon} width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <rect x="3" y="8" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M6 8V6a4 4 0 118 0v2" stroke="currentColor" strokeWidth="1.5" />
-                </svg>
+                <LockIcon className={styles.inputIcon} />
                 <input
                   type={showConfirmPassword ? 'text' : 'password'}
                   id="confirmPassword"
@@ -221,21 +204,15 @@ export default function Signup() {
                 />
                 <button
                   type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  onClick={() => setShowConfirmPassword(!showPassword)}
                   className={styles.togglePassword}
                   tabIndex={-1}
+                  aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                 >
                   {showConfirmPassword ? (
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" strokeWidth="1.5" />
-                      <circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
-                      <line x1="3" y1="3" x2="17" y2="17" stroke="currentColor" strokeWidth="1.5" />
-                    </svg>
+                    <EyeClosedIcon />
                   ) : (
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" strokeWidth="1.5" />
-                      <circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.5" />
-                    </svg>
+                    <EyeOpenIcon />
                   )}
                 </button>
               </div>
