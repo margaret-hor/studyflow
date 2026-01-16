@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.searchForm {
+.searchContainer {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
@@ -39,7 +39,7 @@
   }
 }
 
-.error {
+.noResults {
   color: red;
   margin-bottom: 10px;
 }

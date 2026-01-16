@@ -15,7 +15,6 @@ export async function searchBooks(query, maxResults = 30) {
     if (!response.ok) throw new Error('Failed to fetch books');
 
     const data = await response.json();
-    console.log(data);
 
     return formatGoogleBooks(data.items);
   } catch (error) {
@@ -40,7 +39,6 @@ export async function getBookId(bookId) {
     }
 
     const data = await response.json();
-    console.log(data);
     
     return formatGoogleBook(data)
   } catch (error) {
