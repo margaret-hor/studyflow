@@ -6,19 +6,19 @@ Book tracking web app for managing your reading progress and library.
 
 ## ✨ Features
 
-- **Book Search** - Find books via Google Books API
-- **Progress Tracking** - Track reading page-by-page
-- **Reading Goals** - Set and monitor yearly targets
-- **Personal Library** - Save and organize books
-- **Notes System** - Take Markdown notes on books
-- **Dashboard Analytics** - View reading statistics and streaks
+ - **Book Search** - Find books via Google Books API
+ - **Progress Tracking** - Track reading page-by-page
+ - **Reading Goals** - Set and monitor yearly targets
+ - **Personal Library** - Save and organize books
+ - **Notes System** - Take Markdown notes on books
+ - **Dashboard Analytics** - View reading statistics and streaks
 
 ## 🛠️ Tech Stack
 
-**Frontend:** React, React Router, SCSS Modules  
-**Backend:** Firebase Authentication, Firestore Database  
-**API:** Google Books API  
-**Hosting:** Vercel  
+ - **Frontend:** React, React Router, SCSS Modules  
+ - **Backend:** Firebase Authentication, Firestore Database  
+ - **API:** Google Books API  
+ - **Hosting:** Vercel  
 
 ## 🚀 Quick Start
 
