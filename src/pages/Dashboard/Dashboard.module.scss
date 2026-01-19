@@ -85,6 +85,7 @@
 
 .dashboardContent {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: a.$spacing-5;
 }
@@ -538,6 +539,10 @@
 
   .pagesStatValue {
     font-size: a.$font-2xl;
+  }
+
+  .dashboardContent {
+    flex-direction: row;
   }
 }
 
