@@ -35,7 +35,7 @@ npm run dev
  - Create Firestore Database
  - Get Google Books API key from Google Cloud Console
 
- - Create .env.local file:
+ - Create .env file:
 ```bash
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
