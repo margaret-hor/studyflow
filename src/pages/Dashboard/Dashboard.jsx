@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useLibrary } from '../../hooks/useLibrary';
 import { Link } from 'react-router-dom';
