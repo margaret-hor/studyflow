@@ -7,8 +7,11 @@ import { useAuth } from '../../../contexts/AuthContext';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import styles from './BookDetail.module.scss';
-import { ArrowLeftIcon, ArrowRightIcon, RemoveIcon } from '../../../components/icons';
+import { ArrowLeftIcon, ArrowRightIcon, RemoveIcon, SparklesIcon, SettingsIcon } from '../../../components/icons';
 import emptyLibraryIcon from "../../../assets/icons/empty_library_icon.svg";
+
+import AIAssistant from '../../AIAssistant/AIAssistant';
+import ReadingSettings from '../../ReadingSettings/ReadingSettings';
 
 export default function BookDetail() {
   const { id } = useParams();
@@ -24,11 +27,11 @@ export default function BookDetail() {
     isBookSaved
   } = useLibrary();
 
-  const { 
-    comments, 
-    loading: commentsLoading, 
-    addComment, 
-    deleteComment 
+  const {
+    comments,
+    loading: commentsLoading,
+    addComment,
+    deleteComment
   } = useComments(id);
 
   const [book, setBook] = useState(null);
@@ -43,6 +46,9 @@ export default function BookDetail() {
   const [isEditingNotes, setIsEditingNotes] = useState(false);
   const [pageInputValue, setPageInputValue] = useState('');
   const [deletingComment, setDeletingComment] = useState(null);
+
+  const [showAI, setShowAI] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   const savedBook = savedBooks.find(b => b.id === id);
   const isSaved = isBookSaved(id);
@@ -295,6 +301,22 @@ Write your detailed notes here...
                 Preview on Google
               </a>
             )}
+
+            <button
+              onClick={() => setShowSettings(true)}
+              className={`${styles.secondaryButton} ${styles.settingsButton}`}
+            >
+              <SettingsIcon />
+              Reading Settings
+            </button>
+
+            <button
+              onClick={() => setShowAI(true)}
+              className={`${styles.secondaryButton} ${styles.aiButton}`}
+            >
+              <SparklesIcon />
+              AI Assistant
+            </button>
           </div>
 
           {isSaved && (
@@ -579,6 +601,19 @@ Write your detailed notes here...
           </div>
         </div>
       </div>
+
+      <AIAssistant
+        book={book}
+        isOpen={showAI}
+        onClose={() => setShowAI(false)}
+        currentPage={currentPage}
+      />
+
+      <ReadingSettings
+        isOpen={showSettings}
+        onClose={() => setShowSettings(false)}
+      />
+
     </div>
   );
 }

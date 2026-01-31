@@ -28,3 +28,7 @@ export { default as ArrowLeftIcon } from './ArrowLeftIcon';
 
 export { default as TargetIcon } from './TargetIcon';
 export { default as TrendingIcon } from './TrendingIcon';
+
+export { default as SparklesIcon } from './SparklesIcon';
+export { default as SendIcon } from './SendIcon';
+export { default as SettingsIcon } from './SettingsIcon';

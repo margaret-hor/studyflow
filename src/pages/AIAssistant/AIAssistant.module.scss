@@ -1,0 +1,282 @@
+@use '../../styles/abstracts/index' as a;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(#000, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: a.$spacing-3;
+}
+
+.panel {
+  width: 100%;
+  max-width: 600px;
+  height: 90vh;
+  border-radius: 16px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 16px 20px;
+  border-bottom: 1px solid a.$gray-300;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: a.$primary;
+  }
+
+  h2 {
+    font-size: a.$font-md;
+    font-weight: 600;
+  }
+}
+
+.closeButton {
+  padding: 8px;
+  background: none;
+  border: none;
+  color: a.$gray-500;
+  border-radius: 8px;
+  transition: all .2s;
+
+  &:hover {
+    background: a.$gray-100;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+
+  &.user {
+    flex-direction: row-reverse;
+
+    .messageContent {
+      background-color: a.$primary;
+      color: #fff;
+    }
+  }
+
+  &.assistant {
+    .messageContent {
+      background-color: a.$gray-100;
+      color: a.$gray-900;
+    }
+  }
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: a.$gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    width: 17px;
+    height: 17px;
+    color: #fff;
+  }
+}
+
+.messageContent {
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 85%;
+  font-size: a.$font-sm;
+  line-height: 1.5;
+
+  p:not(:last-child) {
+    margin-bottom: 8px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  ul,
+  ol {
+    margin: 8px 0;
+    padding-left: a.$spacing-5;
+  }
+
+  li {
+    margin: 4px 0;
+  }
+}
+
+.typing {
+  display: flex;
+  gap: 4px;
+  padding: 8px 0;
+
+  span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: a.$gray-400;
+    animation: typing 1.4s infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+@keyframes typing {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+
+  30% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.quickPrompts {
+  padding: 0 24px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.promptButton {
+  padding: 8px 16px;
+  background-color: #fff;
+  border: 1px solid a.$gray-300;
+  border-radius: 20px;
+  font-size: 13px;
+  color: a.$gray-700;
+  transition: all .2s;
+
+  &:hover {
+    border-color: a.$primary;
+    color: a.$primary;
+    background-color: rgba(a.$primary, .05);
+  }
+}
+
+.inputArea {
+  padding: 16px 24px;
+  border-top: 1px solid a.$gray-300;
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+
+  textarea {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid a.$gray-300;
+    border-radius: 12px;
+    font-size: a.$font-sm;
+    resize: none;
+    outline: none;
+
+    &:focus {
+      border-color: a.$primary;
+    }
+
+    &:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.sendButton {
+  padding: 12px;
+  background-color: a.$primary;
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  display: grid;
+  place-content: center;
+  transition: all .2s;
+
+  &:hover:not(:disabled) {
+    background-color: a.$primary-dark;
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@include a.bp-devices(tablet) {
+  .panel {
+    height: 80vh;
+    border-radius: 24px;
+  }
+
+  .header {
+    padding: 20px 24px;
+  }
+
+  .messageContent {
+    max-width: 70%;
+  }
+
+  .message {
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

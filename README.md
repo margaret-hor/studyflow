@@ -1,8 +1,11 @@
 # ReadAbility
 
-Book tracking web app for managing your reading progress and library.
+AI-Powered platform making reading accessible for everyone.
 
 **Live Demo:** [my-readability-app.vercel.app](https://my-readability-app.vercel.app)
+
+## Mission
+Helping 785 million adults read better through AI and accessibility-first design.
 
 ## ✨ Features
 
@@ -12,12 +15,13 @@ Book tracking web app for managing your reading progress and library.
  - **Personal Library** - Save and organize books
  - **Notes System** - Take Markdown notes on books
  - **Dashboard Analytics** - View reading statistics and streaks
+ - **AI Reading Assistant** - Make reading easier with Groq
 
 ## 🛠️ Tech Stack
 
  - **Frontend:** React, React Router, SCSS Modules  
  - **Backend:** Firebase Authentication, Firestore Database  
- - **API:** Google Books API  
+ - **API:** Google Books API, Groq API  
  - **Hosting:** Vercel  
 
 ## 🚀 Quick Start
@@ -44,6 +48,7 @@ VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
 VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 VITE_FIREBASE_APP_ID=your_app_id
 VITE_GOOGLE_BOOKS_API_KEY=your_google_books_api_key
+VITE_GROQ_API_KEY=your_groq_api_key
 ```
 
 ## 📖 How to Use
