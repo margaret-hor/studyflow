@@ -4,7 +4,7 @@ AI-Powered platform making reading accessible for everyone.
 
 **Live Demo:** [my-readability-app.vercel.app](https://my-readability-app.vercel.app)
 
-## Mission
+## 🎯 Mission
 Helping 785 million adults read better through AI and accessibility-first design.
 
 ## ✨ Features
