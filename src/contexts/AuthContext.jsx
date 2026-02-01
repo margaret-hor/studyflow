@@ -139,7 +139,6 @@ export function AuthProvider({ children }) {
     login,
     logout,
     loading,
-    refreshProfile: () => currentUser && fetchUserProfile(currentUser.uid),
     updateYearlyGoal
   };
 
