@@ -1,19 +1,20 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { PublicRoute } from './components/PublicRoute';
-
-import Login from './pages/Login/Login';
-import Signup from './pages/Signup/Signup';
 import Layout from './components/layout/Layout/Layout';
-import Dashboard from './pages/Dashboard/Dashboard';
-import Library from './pages/Library/Library';
-import Notes from './pages/Notes/Notes';
-import Calendar from './pages/Calendar/Calendar';
-import BookDetail from './pages/Library/components/BookDetail';
+
+const Login = lazy(() => import('./pages/Login/Login'));
+const Signup = lazy(() => import('./pages/Signup/Signup'));
+const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
+const Library = lazy(() => import('./pages/Library/Library'));
+const Notes = lazy(() => import('./pages/Notes/Notes'));
+const Calendar = lazy(() => import('./pages/Calendar/Calendar'));
+const BookDetail = lazy(() => import('./pages/Library/components/BookDetail'));
 
 function App() {
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/login" element={
           <PublicRoute>
@@ -41,7 +42,7 @@ function App() {
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>
-    </>
+    </Suspense>
   );
 }
 
