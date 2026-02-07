@@ -48,7 +48,7 @@ export default function BookSearch({
   });
   const [viewMode, setViewMode] = useState('grid');
 
-  const debouncedQuery = useDebounce(query, 500);
+  const debouncedQuery = useDebounce(query, 250);
 
   const performSearch = useCallback(async (searchQuery, index = 0, append = false) => {
     if (!searchQuery.trim()) {

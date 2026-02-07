@@ -2,8 +2,15 @@ import { formatGoogleBook } from '../utils/formatters';
 import { GOOGLE_BOOKS_API_URL, MAX_RESULTS_PER_REQUEST } from '../utils/constants';
 
 const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY || '';
+const searchCache = new Map();
 
 export async function searchBooks(query, options = {}) {
+  const cacheKey = `${query}-${JSON.stringify(options)}`;
+
+  if (searchCache.has(cacheKey)) {
+    return searchCache.get(cacheKey);
+  }
+
   try {
     const {
       maxResults = 30,
@@ -49,10 +56,10 @@ export async function searchBooks(query, options = {}) {
 
     const totalItems = data.totalItems || 0;
 
-    return {
-      books,
-      totalItems,
-    };
+    const result = { books, totalItems };
+
+    searchCache.set(cacheKey, result);
+    return result;
   } catch (error) {
     console.error('Error searching books:', error);
     throw error;
