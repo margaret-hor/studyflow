@@ -23,6 +23,9 @@ export default defineConfig({
     chunkSizeWarningLimit: 600,
     target: 'es2015',
   },
+  server: {
+    port: 5174,
+  },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
   }
