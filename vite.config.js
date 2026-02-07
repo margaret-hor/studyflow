@@ -7,5 +7,23 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore'],
+          'ui-libs': ['react-markdown', 'remark-gfm'],
+        },
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      }
+    },
+    chunkSizeWarningLimit: 600,
+    target: 'es2015',
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
   }
 })
