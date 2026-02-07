@@ -18,6 +18,7 @@ export async function searchBooks(query, options = {}) {
       maxResults: Math.min(maxResults, MAX_RESULTS_PER_REQUEST),
       startIndex,
       printType,
+      fields: 'totalItems,items(id,volumeInfo(title,authors,imageLinks/thumbnail,publishedDate,averageRating))'
     });
 
     if (filter && filter !== 'all') {
@@ -33,9 +34,9 @@ export async function searchBooks(query, options = {}) {
     }
 
     const url = `${GOOGLE_BOOKS_API_URL}?${params.toString()}`;
-    
+
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new Error(`Google Books API error: ${response.status} ${response.statusText}`);
     }
@@ -45,7 +46,7 @@ export async function searchBooks(query, options = {}) {
     const books = (data.items || [])
       .map(item => formatGoogleBook(item))
       .filter(Boolean);
-    
+
     const totalItems = data.totalItems || 0;
 
     return {
@@ -61,15 +62,15 @@ export async function searchBooks(query, options = {}) {
 export async function getBookById(bookId) {
   try {
     const params = new URLSearchParams();
-    
+
     if (API_KEY) {
       params.append('key', API_KEY);
     }
 
     const url = `${GOOGLE_BOOKS_API_URL}/${bookId}${params.toString() ? '?' + params.toString() : ''}`;
-    
+
     const response = await fetch(url);
-    
+
     if (!response.ok) {
       throw new Error(`Failed to fetch book: ${response.status}`);
     }

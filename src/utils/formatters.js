@@ -3,7 +3,11 @@ import { LANGUAGE_NAMES, DEFAULT_READING_SPEED } from './constants';
 export function formatGoogleBook(item) {
   if (!item || !item.volumeInfo) return null;
 
-  const { volumeInfo, saleInfo = {}, accessInfo = {} } = item;
+  const {
+    volumeInfo = {},
+    saleInfo = {},
+    accessInfo = {}
+  } = item;
 
   return {
     id: item.id,
@@ -21,7 +25,6 @@ export function formatGoogleBook(item) {
     printType: volumeInfo.printType || 'BOOK',
     maturityRating: volumeInfo.maturityRating || 'NOT_MATURE',
 
-
     averageRating: volumeInfo.averageRating || 0,
     ratingsCount: volumeInfo.ratingsCount || 0,
 
@@ -38,16 +41,16 @@ export function formatGoogleBook(item) {
     infoLink: volumeInfo.infoLink || '',
     canonicalVolumeLink: volumeInfo.canonicalVolumeLink || '',
 
-    saleability: saleInfo.saleability || 'NOT_FOR_SALE',
-    isEbook: saleInfo.isEbook || false,
-    listPrice: saleInfo.listPrice || null,
-    retailPrice: saleInfo.retailPrice || null,
-    buyLink: saleInfo.buyLink || '',
+    saleability: saleInfo?.saleability || 'NOT_FOR_SALE',
+    isEbook: saleInfo?.isEbook || false,
+    listPrice: saleInfo?.listPrice || null,
+    retailPrice: saleInfo?.retailPrice || null,
+    buyLink: saleInfo?.buyLink || '',
 
-    epub: accessInfo.epub || { isAvailable: false },
-    pdf: accessInfo.pdf || { isAvailable: false },
-    webReaderLink: accessInfo.webReaderLink || '',
-    accessViewStatus: accessInfo.accessViewStatus || 'NONE',
+    epub: accessInfo?.epub || { isAvailable: false },
+    pdf: accessInfo?.pdf || { isAvailable: false },
+    webReaderLink: accessInfo?.webReaderLink || '',
+    accessViewStatus: accessInfo?.accessViewStatus || 'NONE',
   };
 }
 
